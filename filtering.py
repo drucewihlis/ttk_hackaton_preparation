@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 def filtering(filt, wav='03.03_19.wav'):
     out = logmmse_from_file(wav)
-    sig_ff = signal.lfilter(filt,[1], out[:,0])
+    sig_ff = np.array(signal.lfilter(filt,[1], out[:,0]), dtype = 'int16')
     return sig_ff
 if __name__ =='__main__':
     with open('filter.pkl', 'rb') as f:
@@ -25,5 +25,5 @@ if __name__ =='__main__':
 
     out = filtering(taps, wav)
 
-    plt.plot(out[0:10000])
+    #plt.plot(out[0:10000])
     wavfile.write("example.wav", 48000, out)
