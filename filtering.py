@@ -21,9 +21,10 @@ if __name__ =='__main__':
         taps, w, h = pickle.load(f)
 
     wav = '03.03_19.wav'
-    #result = filtering(filt, wav)
+    # result = filtering(filt, wav)
 
     out = filtering(taps, wav)
 
-    #plt.plot(out[0:10000])
+    plt.plot(out[0:10000])
+    plt.show()
     wavfile.write("example.wav", 48000, out)
